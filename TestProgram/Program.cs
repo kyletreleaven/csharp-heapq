@@ -20,13 +20,27 @@ namespace TestProgram
 			Console.WriteLine (string.Join(", ", list));
 
 #if true
-			list.HeapSort ();
+			foreach(var i in list)
+			{
+				heap.HeapPush(i);
+			}
+
+			list.Heapify();
+			//list.HeapSort ();
+
+			var pops = Enumerable.Range(0,list.Count).Select( 
+			                                                 //k => list.HeapPop() 
+			                                                 k => heap.HeapPop() 
+			                                                 );
 #else
 			for (int k=0; k< list.Count; k++) {
 				list.MinHeapify (list.Count - 1 - k);
 			}
 #endif
-			Console.WriteLine (string.Join(", ", list));
+			//Console.WriteLine (string.Join(", ", list));
+			Console.WriteLine (string.Join(", ", heap));
+			Console.WriteLine (heap.IsMinHeap ());
+			Console.WriteLine (string.Join(", ", pops));
 
 			//Console.WriteLine ("Hello World!");
 			//Console.ReadLine ();

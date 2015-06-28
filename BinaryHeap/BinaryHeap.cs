@@ -28,10 +28,10 @@ namespace BinaryHeap
 			list [j] = temp;
 		}
 
-		public static void MinHeapify<T>(this IList<T> heap, int k)
+		private static void FixMinHeap<T>(this IList<T> heap, int k)
 			where T : IComparable<T>
 		{
-			var heapSize = heap.Count;
+			int heapSize = heap.Count;
 
 			int left, right, smallest;
 			left = Left (k);
@@ -51,31 +51,86 @@ namespace BinaryHeap
 
 			if (smallest != k) {
 				heap.Swap (k, smallest);
-				heap.MinHeapify (smallest);
+				heap.FixMinHeap (smallest);
 			}
 		}
 
-		public static void MakeMinHeap<T>(this IList<T> heap)
+		public static void Heapify<T>(this IList<T> heap)
 			where T : IComparable<T>
 		{
 			for (int k=heap.Count-1; k >= 0; k--) {
-				heap.MinHeapify (k);
+				heap.FixMinHeap (k);
 			}
 		}
 
-		// buggy, but good progress tonight
+		private static bool CheckMinHeapNode<T>(this IList<T> heap, int k)
+			where T : IComparable<T>
+		{
+			int left = Left(k), right = Right(k);
+			if (left < heap.Count && heap [k].CompareTo (heap [left]) > 0)
+				return false;
+			if (right < heap.Count && heap[k].CompareTo(heap[right]) > 0)
+				return false;
+
+			return true;
+		}
+
+		public static bool IsMinHeap<T>(this IList<T> heap)
+			where T : IComparable<T>
+		{
+			for (int k=0; k<heap.Count; k++) {
+				if (!heap.CheckMinHeapNode (k))
+					return false;
+			}
+			return true;
+		}
+
+		// TODO: need to invert polarity
 		public static void HeapSort<T>(this IList<T> heap)
 			where T : IComparable<T>
 		{
-			heap.MakeMinHeap ();
+			heap.Heapify ();
 
 			var shrinkHeap = new ListView<T> (heap, 0, heap.Count);
 
 			for (int k=heap.Count-1; k > 0; k--) {
 				heap.Swap (k, 0);
 				shrinkHeap.Count--;
-				shrinkHeap.MinHeapify (0);
+				shrinkHeap.FixMinHeap(0);
 			}
+		}
+
+		public static T HeapPeek<T>(this IList<T> heap)
+		{
+			return heap [0];
+		}
+
+		public static T HeapPop<T>(this IList<T> heap)
+			where T : IComparable<T>
+		{
+			T min = heap [0];
+			heap [0] = heap [heap.Count-1];
+			heap.RemoveAt(heap.Count-1);
+			heap.FixMinHeap (0);
+			return min;
+		}
+
+		private static void FixDecreasedKey<T>(this IList<T> heap, int k)
+			where T : IComparable<T>
+		{
+			int i = k;
+			while (i > 0 && heap[Parent(i)].CompareTo( heap[i] ) > 0 ) {
+				heap.Swap (i, Parent (i));
+				i = Parent (i);
+			}
+		}
+
+		public static void HeapPush<T>(this IList<T> heap, T item)
+			where T : IComparable<T>
+		{
+			int k = heap.Count;
+			heap.Add (item);
+			heap.FixDecreasedKey (k);
 		}
 	}
 }
