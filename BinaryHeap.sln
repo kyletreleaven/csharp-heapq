@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryHeap", "BinaryHeap\Bi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProgram", "TestProgram\TestProgram.csproj", "{8C128D89-62D6-48A7-935B-02163FC82798}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryHeap.Test", "BinaryHeapTest\BinaryHeap.Test.csproj", "{4CDB84F8-075C-47C1-B10F-E9DA94B97E85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{44215AAE-5D72-4972-A7DA-0DD546B7C6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44215AAE-5D72-4972-A7DA-0DD546B7C6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44215AAE-5D72-4972-A7DA-0DD546B7C6DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CDB84F8-075C-47C1-B10F-E9DA94B97E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CDB84F8-075C-47C1-B10F-E9DA94B97E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CDB84F8-075C-47C1-B10F-E9DA94B97E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CDB84F8-075C-47C1-B10F-E9DA94B97E85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8C128D89-62D6-48A7-935B-02163FC82798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8C128D89-62D6-48A7-935B-02163FC82798}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C128D89-62D6-48A7-935B-02163FC82798}.Release|Any CPU.ActiveCfg = Release|Any CPU
