@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace BinaryHeapTest
 {
 	[TestFixture()]
-	public class Test
+	public class BasicTest
 	{
 		[Test()]
 		public void HeapPushTest ()
@@ -40,7 +40,7 @@ namespace BinaryHeapTest
 			Assert.IsTrue (heap.HeapPushPop (-1) == -1);
 			Assert.IsTrue (heap.IsMinHeap ());
 
-			// -1 5 6
+			// 0 5 6
 		}
 	}
 }
