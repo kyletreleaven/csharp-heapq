@@ -92,7 +92,7 @@ namespace BinaryHeap
 		}
 
 		/// <summary>
-		/// Turn the IList into a min heap in O(n lg n) time.
+		/// Turn the IList into a min heap in O(n) time.
 		/// </summary>
 		/// <param name="heap">Heap.</param>
 		/// <typeparam name="T">The 1st type parameter.</typeparam>
